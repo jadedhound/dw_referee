@@ -39,12 +39,13 @@
     <div class="flex flex-col h-[calc(100vh-96px)]">
 
 
-      {% set map_path = "images/" ~ page.relative_path | replace(from=".md", to=".webp") %}
-      {% set map_data = get_image_metadata(path="images/" ~ page.relative_path | replace(from=".md", to=".webp"), allow_missing=true) %}
+      {% set map_path = "images/" ~ page.relative_path | replace(from=".md", to=".png") %}
+      {% set map_data = get_image_metadata(path="images/" ~ page.relative_path | replace(from=".md", to=".png"), allow_missing=true) %}
       {% if map_data %}
+      {% set image = resize_image(path=map_path, width=1920, height=1080, op="fit", format="webp", quality=70) %}
       <img 
         class="mt-0 mb-6 rounded-lg max-h-[45vh] mx-auto"
-        src="{{ get_url(path=map_path, cachebust=true) }}" 
+        src="{{ image.url }}" 
         alt="cover"
       >
       {% endif %}

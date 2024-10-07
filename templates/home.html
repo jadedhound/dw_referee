@@ -16,8 +16,8 @@
     {% set subsection = get_section(path=subpath) %}
     {% if not subsection.extra.hidden %}
     <div>
-        <h2 class="font-[OldLondon] text-4xl">{{ subsection.title }}</h2>
-        <ul class="list-none ml-8 gap-2">
+        <h2 class="font-[NK123] text-4xl text-green-600">{{ subsection.title }}</h2>
+        <ul class="list-none ml-4 gap-2">
           {% for page in subsection.pages %}
           <li class="mt-4">
             <a href="{{ page.permalink | safe }}" class="md:max-w-3xl md:place-self-center w-full">

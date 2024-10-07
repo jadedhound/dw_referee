@@ -7,31 +7,37 @@ module.exports = {
         DEFAULT: {
           css: {
             h1: {
-              fontFamily: 'OldLondon',
+              fontFamily: 'NK123',
               fontWeight: '400',
               fontSize: '3rem',
               marginTop: '0.5rem',
               marginBottom: '0.5rem',
+              color: '#16a34a'
             },
             h2: {
               marginTop: '0.75rem',
               marginBottom: '0.75rem',
               fontSize: '1.25rem',
-              borderBottomWidth: '3px',
               lineHeight: '1.5',
-              borderImage: 'linear-gradient(to right, #ca8a04 0, #ca8a04 30%, transparent 100%) 1'
+              color: '#f97316',
+              borderBottomWidth: '3px',
+              borderImage: 'linear-gradient(to right, #f97316 0, #f97316 30%, transparent 100%) 1'
             },
             h3: {
               fontSize: '1rem',
               marginTop: '0.25rem',
               marginBottom: '0.25rem',
               textTransform: 'uppercase',
-              textAlign: 'center'
+              textAlign: 'center',
+              color: '#0ea5e9',
             },
             a: {
               textTransform: 'capitalize',
               color: '#f59e0b'
-            }
+            },
+            strong: {
+              color: '#ef4444'
+            },
           }
         }
       }
