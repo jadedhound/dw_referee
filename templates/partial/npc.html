@@ -1,0 +1,26 @@
+{% set languages = ["fairy_chaotic"] %}
+{% if npc_data %}
+<div class="fixed top-0 left-0 z-10 h-screen w-screen hidden target:block" id="npc">
+  <div class="psuedo bg-zinc-800 opacity-85 h-full"></div>
+  <div class="flex flex-col z-10 fixed top-0 left-0 h-full w-full">
+    <a href="javascript:history.back()" class="grow h-12 psuedo"></a>
+    <div class="bg-zinc-700 rounded shadow shadow-black max-w-2xl mx-auto p-4">
+      <h2>NPC</h2>
+        {% for lang in languages %}
+          {% set lang_dex = load_data(path="npc/" ~ lang ~ ".yml") %}
+          {% for npc_id in npc_data[lang] %}
+            {% set npc = lang_dex[npc_id] %}
+            <h4> {{ npc["name"] | title }} </h4>
+            <i> {{ npc["desc"] ~ "." | capitalize }} </i>
+            <ul>
+            {% for ex in npc["extra"] %}
+              <li> {{ ex }} </li>
+            {% endfor %}
+            </ul>
+          {% endfor %}
+        {% endfor %}
+    </div>
+    <a href="javascript:history.back()" class="grow h-12 psuedo"></a>
+  </div>
+</div>
+{% endif %}

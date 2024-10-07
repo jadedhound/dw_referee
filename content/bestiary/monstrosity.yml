@@ -1,0 +1,53 @@
+mantis_drone:
+  name: "Mantis Drone (1/2 HD)"
+  desc: "A small beetle with a pulsing, serated red cross on its back"
+  hp: 1
+  ac: 10
+  speed: "30 ft"
+  str: "-1"
+  dex: "+2"
+  con: "+0"
+  int: "-4"
+  wis: "+0"
+  cha: "-1"
+  abilities:
+    - name: "ATK"
+      desc: "Bite: +0 (1)" 
+    - name: "Vile Explosion"
+      desc: "On death deal 1d4 damage to all nearby"
+  loot: "Broken carapace (1sp)"
+mantis_windblade:
+  name: "Mantis Windblade (3 HD)"
+  desc: "A mantid whose forearms are cloaked in vortex of wind"
+  hp: 14
+  ac: 14
+  speed: "40 ft"
+  str: "+2"
+  dex: "+2"
+  con: "+1"
+  int: "+0"
+  wis: "+1"
+  cha: "-2"
+  abilities:
+    - name: "ATK"
+      desc: "Windblades: +4 (1d6) travels 30 ft" 
+    - name: "Wind Wall"
+      desc: "20 ft line in front stops projectiles" 
+  loot: "Windblade (1d4 charges)"
+mantis_fanatic:
+  name: "Mantis Fanatic (2 HD)"
+  desc: "A mantid with large amber beads hanging around its neck"
+  hp: 8
+  ac: 14
+  speed: "30 ft"
+  str: "+0"
+  dex: "+0"
+  con: "+1"
+  int: "+2"
+  wis: "+0"
+  cha: "-2"
+  abilities:
+    - name: "ATK"
+      desc: "Magic Bolt: (INT Spell). DC 11. 1d4 damage to one target within far" 
+  loot: "1 Black Candle, 10 sp"
+

@@ -1,0 +1,19 @@
+bandit:
+  name: "Bandit (1 HD)"
+  desc: "Hard-bitten rogue in tattered leathers and a hooded cloak"
+  hp: 4
+  ac: 13
+  speed: "30 ft"
+  str: "+1"
+  dex: "+0"
+  con: "+0"
+  int: "-1"
+  wis: "+0"
+  cha: "-1"
+  abilities:
+    - name: "ATK"
+      desc: "Club +1 (1d4) or shortbow +0 (1d4)" 
+    - name: "Ambush"
+      desc: "Deal an extra die of damage when undetected"
+  loot: "Gambeson"
+

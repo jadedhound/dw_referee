@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <main class= "prose prose-zinc prose-invert p-2 max-w-full">
+    <div class="flex items-center px-6 gap-4">
+      <h1 class="text-6xl mr-auto"> {{ page.title }} </h1>
+
+      {% set section = get_section(path=page.ancestors | last) %}
+
+      {% set bestiary_data = load_data(path="bestiary/" ~ section.relative_path | replace(from="/_index.md", to=".yml"), required=false) %}
+      {% if bestiary_data %}
+      <a href="#bestiary" class="" aria-label="Show all creature stats for this area">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 185 185" class="w-8 h-8 fill-zinc-200">
+          <path fill-rule="evenodd" d="m29 35 2 6 1 10 1 6-3 1-6 3c-2 2-4 3-5 2l-1-7a46 46 0 0 1 8-19l3-2zm123 31 5 2c2 1 4 4 5 7l4 13c0 8 0 9-2 12l-7 7-9 3h-6l-6-6-5-8-3-6c0-2 2-5 10-13 9-9 11-11 13-11zM75 0l2 2 1 5 2 10v7H69l-5 2-1-5 4-11c1-3 3-6 5-7l3-3zm36 0 5 5a35 35 0 0 1 9 20l-4 1a29 29 0 0 0-15 0l1-12 1-13 3-1zM72 32l8 4 7 8v6l-1 14c0 9 0 10-2 12-2 3-4 3-8 3l-8-1-7-5-6-9-2-7 2-9 8-10c5-5 6-6 9-6zm45 3 6 3 6 7c2 3 4 7 4 10 2 3 2 6 1 8l-4 7c-1 3-5 6-7 8l-6 4-5-2-7-3-7-4-2-8a120 120 0 0 1 11-27l4-3h5zm33 3 4 4c3 2 5 6 6 9l2 7-1 2h-15v-6l1-10v-5l3-1zM34 65l5 1 10 10c8 7 8 8 8 13s0 5-5 11l-8 8-7 2c-3 0-5-1-8-3s-5-5-7-9c-2-5-2-6-2-12l3-12c2-5 4-6 6-8l5-1zm56 23 10 1 11 5 8 7 6 10 8 11 10 8c4 2 7 5 8 7l3 8a59 59 0 0 1-4 25l-6 8-8 5-10 1c-4-1-8-2-12-5l-13-6-10-2-10 2-12 5-9 5-8 1-9-2-8-6-5-10-2-16c0-8 1-10 3-13 1-2 4-5 7-6l10-8 10-14c2-5 6-10 8-12l7-5a48 48 0 0 1 17-4zm-20 34c-7 7-9 11-9 13 0 3 2 4 14 14 11 8 15 11 17 11 3 0 5-2 13-10 10-10 10-10 10-13-1-2-3-6-8-10-4-4-7-6-9-6l-4 1-4 5c-2 3-3 4-2 6s2 2 6 1c3 0 4 0 5 2s0 3-3 6l-5 4-8-5-8-7 8-14 7-11 13 1h2l-6-6-8-5-7 6-14 17z"/>
+        </svg>
+      </a>
+      {% endif %}
+
+      {% set npc_data = load_data(path="npc/" ~ section.relative_path | replace(from="/_index.md", to=".yml"), required=false) %}
+      {% if npc_data %}
+      <a href="#npc" class="" aria-label="Show all NPCs for this area">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-8 h-8 fill-zinc-200">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+        </svg>
+      </a>
+      {% endif %}
+      <a href="/" class="mr-4" aria-label="Return to the homepage">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 h-8 fill-zinc-200">
+          <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+          <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+        </svg>
+      </a>
+    </div>
+
+    {% include "partial/bestiary.html" %}
+
+    {% include "partial/npc.html" %}
+
+    <div class="flex flex-col h-[calc(100vh-96px)]">
+
+
+      {% set map_path = "images/" ~ page.relative_path | replace(from=".md", to=".webp") %}
+      {% set map_data = get_image_metadata(path="images/" ~ page.relative_path | replace(from=".md", to=".webp"), allow_missing=true) %}
+      {% if map_data %}
+      <img 
+        class="mt-0 mb-6 rounded-lg max-h-[45vh] mx-auto"
+        src="{{ get_url(path=map_path, cachebust=true) }}" 
+        alt="cover"
+      >
+      {% endif %}
+
+      <div class="flex grow h-1">
+        {% include "partial/toc.html" %}
+        <article class="overflow-y-auto">
+          {{ page.content | safe }}
+        </article>
+      </div>
+    </div>
+  </main>
+{% endblock content %}
